@@ -52,7 +52,7 @@ And much more.
 ## Usage
 
 	<script src="jszip.js"></script>
-	<script src="odt.js"></script>
+	<script src="lib/odt.js"></script>
 
 ### odt2html
 
@@ -81,31 +81,40 @@ If you want fallback html:
 
 ### html2odt
 
-	var odtdoc = new ODTDocument(ODTDocument.Empty);
-	try {
-		odtdoc.setHTML(html);
-	} catch(e) {
-		alert("Couldn't generate odt document.");
-		throw e;
-	}
-	var odt = odtdoc.getODT();
+	var req = new XMLHttpRequest();
+	req.open('GET', 'res/empty.odt');
+	req.responseType = 'arraybuffer';
+	req.addEventListener('load', function() {
+		var empty = req.response;
+		
+		var odtdoc = new ODTDocument(empty);
+		try {
+			odtdoc.setHTML(html);
+		} catch(e) {
+			alert("Couldn't generate odt document.");
+			throw e;
+		}
+		var odt = odtdoc.getODT();
+	});
+	req.send();
 
 If you definitely want odt while caring less about whether or not it is
 a valid odt file:
 
-	var odtdoc = new ODTDocument(ODTDocument.Empty);
-	odtdoc.setHTMLUnsafe(html);
-	var odt = odtdoc.getODT();
+		var odtdoc = new ODTDocument(empty);
+		odtdoc.setHTMLUnsafe(html);
+		var odt = odtdoc.getODT();
 
 If you want a fallback odt:
 
-	var odtdoc = new ODTDocument(ODTDocument.Empty);
-	try {
-		odtdoc.setHTML(html);
-	} catch(e) {
-		odtdoc.setHTMLUnsafe(html);
-		console.error('odt is probably broken');
-	}
+		var odtdoc = new ODTDocument(empty);
+		try {
+			odtdoc.setHTML(html);
+		} catch(e) {
+			odtdoc.setHTMLUnsafe(html);
+			console.error('odt is probably broken');
+		}
+		var odt = odtdoc.getODT();
 
 ### Simple odt editor:
 
@@ -118,6 +127,15 @@ If you want a fallback odt:
 		iframe.contentDocument.write(html);
 		iframe.contentDocument.close();
 	}
+	iframe.contentDocument.documentElement.addEventListener('input', function save() {
+		try {
+			odtdoc.setHTML(iframe.contentDocument.documentElement.outerHTML);
+		} catch(e) {
+			alert("Generating ODT file failed.");
+			throw e;
+		}
+		odt = odtdoc.getODT();
+	});
 
 ## Documentation
 
