@@ -35,6 +35,10 @@ And much more.
 
 ## Strictness
 
+**Warning: currently, the following goes only within a single version of
+odt2html2odt. So you can't `getHTML`, store the html, `setHTML` with
+another version of odt2html2odt and expect a correct odt.**
+
 `getHTML` throws when otherwise a `getHTML` -> set html -> get html ->
 `setHTML` roundtrip would not produce the original odt file (barring xml
 encoding and zip file changes). This is the case for most unsupported
