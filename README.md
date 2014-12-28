@@ -2,26 +2,6 @@
 
 odt2html2odt is a Javascript library to convert odt to html and back.
 
-## Strictness
-
-`getHTML` throws when otherwise a `getHTML` -> set html -> get html ->
-`setHTML` roundtrip would not produce the original odt file (barring xml
-encoding and zip file changes). This is the case for most unsupported
-odt features, except unsupported text styles.
-
-`getHTMLUnsafe` probably won't produce html that's totally useless,
-since browsers are very forgiving. It might produce html which does not
-accurately represent the odt, though `getHTML` will also do that for
-unsupported styles.
-
-`setHTML` throws when otherwise a `setHTML` -> `getHTML` roundtrip would
-not produce the original html (barring style and html encoding changes).
-This is the case for most unsupported html features, except unsupported
-text styles. The hope is that it means the resulting odt is not broken,
-but it's no guarantee.
-
-`setHTMLUnsafe` might produce completely broken odt files.
-
 ## Limitations
 
 **Currently, `setHTML` only supports html as returned by `getHTML`,
@@ -52,6 +32,26 @@ Unsupported odt features:
 	- Loads of other styles
 
 And much more.
+
+## Strictness
+
+`getHTML` throws when otherwise a `getHTML` -> set html -> get html ->
+`setHTML` roundtrip would not produce the original odt file (barring xml
+encoding and zip file changes). This is the case for most unsupported
+odt features, except unsupported text styles.
+
+`getHTMLUnsafe` probably won't produce html that's totally useless,
+since browsers are very forgiving. It might produce html which does not
+accurately represent the odt, though `getHTML` will also do that for
+unsupported styles.
+
+`setHTML` throws when otherwise a `setHTML` -> `getHTML` roundtrip would
+not produce the original html (barring style and html encoding changes).
+This is the case for most unsupported html features, except unsupported
+text styles. The hope is that it means the resulting odt is not broken,
+but it's no guarantee.
+
+`setHTMLUnsafe` might produce completely broken odt files.
 
 ## Usage
 
