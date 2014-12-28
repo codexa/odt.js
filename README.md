@@ -24,6 +24,10 @@ but it's no guarantee.
 
 ## Limitations
 
+**Currently, `setHTML` only supports html as returned by `getHTML`,
+maybe with minor modifications such as changing text.** Currently, this
+means `setHTML` will throw when given arbitrary html.
+
 Currently, odt2html2odt depends on the browser's XML parser, DOM parser
 and DOM serializer. If you want to use odt2html2odt on the server, one
 way forward is to modify it to add support for pure javascript parsers.
@@ -80,6 +84,9 @@ If you want fallback html:
 	}
 
 ### html2odt
+
+**As mentioned in [Limitations][], this example is currently
+non-functional for arbitrary html.**
 
 	var req = new XMLHttpRequest();
 	req.open('GET', 'res/empty.odt');
@@ -221,7 +228,7 @@ Please follow the code style of surrounding code, so single quotes
 unless the string contains a single quote, `if(` instead of `if (`, etc.
 
 If you want to modify odt2html2odt for use outside the browser, see tips
-in [Limitations]().
+in [Limitations][].
 
 
 [JSZip]: https://stuk.github.io/jszip/
