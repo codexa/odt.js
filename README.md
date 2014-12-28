@@ -160,35 +160,35 @@ For arguments and errors, see the [JSZip documentation][JSZipLoad].
 
 Convert the odt document to html.
 
-Throws `TypeError` if [JSZip]() or [DOMParser]() is undefined or if
+Throws `TypeError` if [JSZip][] or [DOMParser][] is undefined or if
 DOMParser does not support parsing text/xml and text/html.
 
 Throws `Error` if the odt uses unsupported features (it doesn't throw on
-unsupported text styles, though). For more details, see [Strictness]()
+unsupported text styles, though). For more details, see [Strictness][]
 above.
 
 ### `ODTDocument#getHTMLUnsafe`
 
 `ODTDocument#getHTMLUnsafe() -> html | TypeError`
 
-Throws `TypeError` if [JSZip]() or [DOMParser]() is undefined or if
+Throws `TypeError` if [JSZip][] or [DOMParser][] is undefined or if
 DOMParser does not support parsing text/xml and text/html.
 
 ### `ODTDocument#setHTML`
 
 `ODTDocument#setHTML(String html) -> undefined | TypeError | Error`
 
-Throws `TypeError` if [DOMParser]() is undefined or if DOMParser does
+Throws `TypeError` if [DOMParser][] is undefined or if DOMParser does
 not support parsing text/xml.
 
 Throws `Error` if the html uses unsupported features. For more details,
-see [Strictness]() above.
+see [Strictness][] above.
 
 ### `ODTDocument#setHTMLUnsafe`
 
 `ODTDocument#setHTMLUnsafe(String html) -> undefined | TypeError`
 
-Throws `TypeError` if [DOMParser]() is undefined or if DOMParser does
+Throws `TypeError` if [DOMParser][] is undefined or if DOMParser does
 not support parsing text/xml.
 
 ### `ODTDocument#getODT`
