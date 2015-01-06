@@ -68,7 +68,7 @@ but it's no guarantee.
 	try {
 		html = new ODTDocument(odt).getHTML();
 	} catch(e) {
-		alert("Couldn't parse html file.");
+		alert("Couldn't parse odt file.");
 		throw e;
 	}
 
