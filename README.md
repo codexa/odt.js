@@ -1,6 +1,5 @@
-# odt2html2odt
-
-odt2html2odt is a Javascript library to convert odt to html and back.
+# odt.js
+odt.js is a Javascript library to convert odt to html and back.
 
 ## Limitations
 
@@ -8,8 +7,8 @@ odt2html2odt is a Javascript library to convert odt to html and back.
 maybe with minor modifications such as changing text.** Currently, this
 means `setHTML` will throw when given arbitrary html.
 
-Currently, odt2html2odt depends on the browser's XML parser, DOM parser
-and DOM serializer. If you want to use odt2html2odt on the server, one
+Currently, odt.js depends on the browser's XML parser, DOM parser
+and DOM serializer. If you want to use odt.js on the server, one
 way forward is to modify it to add support for pure javascript parsers.
 Keep in mind that for strictness parity with the in-browser parser, you
 need a DOM parser which breaks up the `<p>` in `<p><div></div></p>`.
@@ -36,8 +35,8 @@ And much more.
 ## Strictness
 
 **Warning: currently, the following goes only within a single version of
-odt2html2odt. So you can't `getHTML`, store the html, `setHTML` with
-another version of odt2html2odt and expect a correct odt.**
+odt.js. So you can't `getHTML`, store the html, `setHTML` with
+another version of odt.js and expect a correct odt.**
 
 `getHTML` throws when otherwise a `getHTML` -> set html -> get html ->
 `setHTML` roundtrip would not produce the original odt file (barring xml
@@ -207,13 +206,13 @@ For `options` and errors, see the [JSZip documentation][JSZipGenerate].
 
 ### Tips
 
-odt2html2odt is very strict towards its own code (except the `Unsafe`
+odt.js is very strict towards its own code (except the `Unsafe`
 functions, that is). `getHTML` throws when a odt 2 html 2 odt roundtrip
 doesn't produce exactly the same odt file, and also when it produced
 invalid html (it's not as strict about the latter, though, e.g. it
 throws when you produce one `<p>` inside another).
 
-One way to go about adding features to odt2html2odt is to use
+One way to go about adding features to odt.js is to use
 `getHTMLUnsafe` and iterate until that generates something sane.
 
 Another way is to use `getHTML` and set a breakpoint on the line that
@@ -231,7 +230,7 @@ print media.
 Please follow the code style of surrounding code, so single quotes
 unless the string contains a single quote, `if(` instead of `if (`, etc.
 
-If you want to modify odt2html2odt for use outside the browser, see tips
+If you want to modify odt.js for use outside the browser, see tips
 in [Limitations][].
 
 
